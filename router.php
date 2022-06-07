@@ -1,5 +1,7 @@
 <?php
     require_once './startup/boot.php';
+    require_once './controllers/BaseController.php';
+    require_once './controllers/BaseAuthController.php';
     require_once './controllers/SiteController.php';
     require_once './controllers/LoginController.php';
     require_once './controllers/FaturaController.php';

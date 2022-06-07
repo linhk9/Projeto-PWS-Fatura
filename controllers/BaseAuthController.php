@@ -1,5 +1,4 @@
 <?php
-    require_once './controllers/BaseController.php';
     require_once './models/User.php';
 
     class BaseAuthController extends BaseController

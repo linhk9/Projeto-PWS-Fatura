@@ -1,5 +1,4 @@
 <?php
-    require_once './controllers/BaseAuthController.php';
     require_once './models/Fatura.php';
     use Carbon\Carbon;
 
