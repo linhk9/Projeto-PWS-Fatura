@@ -4,6 +4,7 @@
         static array $validates_presence_of = array(
             array('name'),
             array('password'),
+            array('email'),
             array('role')
         );
     }

@@ -15,7 +15,6 @@
             if($user)
             {
                 $_SESSION['nome'] = $user->username;
-                $_SESSION['role'] = $user->role;
                 $_SESSION['user_id'] = $user->id;
                 return true;
             }
@@ -36,10 +35,5 @@
         public function getUsername()
         {
             return $_SESSION['nome'] ?? null;
-        }
-
-        public function getRole()
-        {
-            return $_SESSION['role'] ?? null;
         }
     }

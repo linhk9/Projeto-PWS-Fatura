@@ -12,7 +12,6 @@
             if($auth->isLoggedIn())
             {
                 $username = $auth->getUsername();
-                $role = $auth->getRole();
             }
 
             require_once './views/layout/header.php';

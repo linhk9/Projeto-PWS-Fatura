@@ -37,18 +37,14 @@
                     {
                         ?>
                         <li>
-                            <a class="nav-link" href="./router.php?c=plano&a=index">Plano Pagamentos</a>
+                            <a class="nav-link" href="./router.php?c=fatura&a=index">Faturas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./router.php?c=user&a=index"">Gestão de Utilizador</a>
                         </li>
                         <?php
                     }
                 ?>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="./router.php?c=book&a=index"">Books</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./router.php?c=book&a=create">Create books</a>
-                </li>
             </ul>
         </div>
     </div>

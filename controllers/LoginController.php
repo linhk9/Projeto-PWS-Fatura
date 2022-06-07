@@ -13,7 +13,7 @@
             }
             else
             {
-                $this->redirectToRoute('plano', 'index');
+                $this->redirectToRoute('fatura', 'index');
             }
         }
 
@@ -24,7 +24,7 @@
                 $auth = new Auth();
                 if($auth->checkLogin($_POST['name'], $_POST['password']))
                 {
-                    $this->redirectToRoute('plano', 'index');
+                    $this->redirectToRoute('fatura', 'index');
                 }
                 else
                 {
