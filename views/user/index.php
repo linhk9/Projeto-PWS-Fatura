@@ -29,9 +29,3 @@
         </div>
     </div>
 </body>
-<?php
-foreach ($users as $user) {
-    echo "<br>";
-    var_dump($user->username);
-}
-?>

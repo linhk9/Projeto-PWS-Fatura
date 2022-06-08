@@ -40,7 +40,7 @@
                             <a class="nav-link" href="./router.php?c=fatura&a=index">Faturas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./router.php?c=user&a=index"">Gestão de Utilizador</a>
+                            <a class="nav-link" href="./router.php?c=user&a=index">Gestão de Utilizador</a>
                         </li>
                         <?php
                     }
