@@ -22,16 +22,19 @@
             </thead>
             <tbody id = "table2">
                 <tr class = "tr">
-                    <?php foreach ($users as $user):?>
-                            <th scope="row" class = "nmr"><?php echo ($user ->  );?></th>
-                            <td class = "nome"><?php echo ($user=>);?></td>
-                            <td class = "Email"><?php echo ($user=>);?></td>
-                            <td class = "Pass"><?php echo ($user=>);?></td>
-                            <td><img src="public/img/Edit.png" class="Edit"  href="./router.php?c=fatura&a=index"></td>
-                            <td><img src="public/img/guardar.png" class="Guardar" href="./router.php?c=fatura&a=index"></td>
+                <?php 
+                if (isset($users)){
+                echo "sou gay";
+                    foreach ($users as $user) {
+                        if ($user -> role == 'Cliente' ||  $user -> role == 'Funcionario'){?>
+                            <th scope="row" class = "nmr"><?php $user -> id?></th>
+                            <td class = "nome"><?php $user -> username?></td>
+                            <td class = "Email"><?php $user -> email?></td>
+                            <td class = "Pass" ><?php $user -> password?></td>
+                            <!--<td><img src="public/img/Edit.png" class="Edit"  href="./router.php?c=fatura&a=index"></td>
                             <td><img src="public/img/delete.png" class="Apagar" href="./router.php?c=fatura&a=index"></td>
-                        }
-                    <?php endforeach;?>
+                            <td><img src="public/img/guardar.png" class="Guardar" href="./router.php?c=fatura&a=index"></td>-->
+                       <?php }}}?>
         </tr>
     </tbody>
 </table>
