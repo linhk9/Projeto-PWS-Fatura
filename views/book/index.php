@@ -1,4 +1,4 @@
-<?php require_once './views/layout/header.php'; ?>
+    <?php require_once './views/layout/header.php'; ?>
     <h2 class="text-left top-space">Book Index</h2>
     <h2 class="top-space"></h2>
     <div class="row">

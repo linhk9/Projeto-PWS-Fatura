@@ -55,6 +55,12 @@
                     case "index":
                         $controller->index();
                         break;
+                    case "destroy":
+                        $controller->delete($_GET['id']);
+                        break;
+                    case "update":
+                        $controller->update($_GET['id']);
+                        break;
                 }
                 break;
 

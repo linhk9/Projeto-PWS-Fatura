@@ -24,34 +24,72 @@
                             <button type="submit" class="btn btn-primary mb-3">Guardar</button>
                         </div>
                     </div>
-                        <table class="table" id="table1">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Palavra-Pass</th>
-                        <th scope="col">Edit</th>
-                        <th scope="col">Guardar</th>
-                        <th scope="col">Apagar</th>
-                      </tr>
-                    </thead>
-                    <tbody id = "table2">
-                        <tr class = "tr">
-                        <?php 
-                        if (isset($users)){
-                            foreach ($users as $user) {
-                                if ($user -> role == 'Cliente' ||  $user -> role == 'Funcionario'){?>
-                                    <th scope="row" class = "nmr"><?php echo $user -> id;?></th>
-                                    <td class = "nome"><?php echo $user -> username;?></td>
-                                    <td class = "Email"><?php echo $user -> email;?></td>
-                                    <td class = "Pass" ><?php echo $user -> password;?></td>
-                                    <td class = "Role" ><?php echo $user -> role;?></td>
-                                    <td><img src="public/img/Edit.png" class="Edit"  href="./router.php?c=fatura&a=index"></td>
-                                    <td><img src="public/img/delete.png" class="Apagar" href="./router.php?c=fatura&a=index"></td>
-                                    <td><img src="public/img/guardar.png" class="Guardar" href="./router.php?c=fatura&a=index"></td>
-                               <?php }}}?>
-                </tr>
+                    <table class="table" id="table1">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Palavra-Pass</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Apagar</th>
+                          </tr>
+                        </thead>
+                        <tbody id = "table2">
+                            <?php 
+                            if (isset($users)){
+                                var_dump($users);
+                                foreach ($users as $user) {
+                                    if ($user -> role == 'Cliente' ||  $user -> role == 'Funcionario'){?>
+                                        <tr class = "tr">
+                                            <th scope="row" class = "nmr"><?php echo $user -> id;?></th>
+                                            <td class = "nome"><?php echo $user -> username;?></td>
+                                            <td class = "Email"><?php echo $user -> email;?></td>
+                                            <td class = "Pass" ><?php echo $user -> password;?></td>
+                                            <td class = "Role" ><?php echo $user -> role;?></td>
+                                            <td><a data-bs-toggle="modal" data-bs-target="#editar" class="btn btn-primary" role="button">Editar</a></td>
+                                            <td><a href="./router.php?c=user&a=destroy&id=<?=$user -> id; ?>" class="btn btn-primary" role="button">Apagar</a></td>
+                                        </tr>
+                            <?php }}}?>
+                        </tbody>
+                    </table>
+                    <div class="modal fade" id="editar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Editar</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <form action="./router.php?c=user&a=update&id=<?=$user -> id;?>" method="post">
+                                <table class="table" id="table1">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Palavra-Pass</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody id = "table2">
+                                        <tr class = "tr">
+                                            <th scope="row" class = "nmr"><?php echo $user -> id;?></th>
+                                            <td class = "nome"><input type="text" name="username" id="username" value="<?php echo $user -> username;?>"></td>
+                                            <td class = "Email"><input type="text" name="email" id="email" value="<?php echo $user -> email;?>"></td>
+                                            <td class = "Pass" ><input type="password" name="password" id="password" value="<?php echo $user -> password;?>"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                &nbsp<input class="btn btn-info" role="button" type="submit">
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <a href="./router.php?c=user&a=index" class="btn btn-primary" role="button">Guardar</a>
+                          </div>
+                        </div>  
+                      </div>
+                    </div>
                 </div>
             </div>
         </div>
