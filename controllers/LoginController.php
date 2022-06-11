@@ -24,7 +24,7 @@
                 $auth = new Auth();
                 if($auth->checkLogin($_POST['name'], $_POST['password']))
                 {
-                    $this->redirectToRoute('fatura', 'index');
+                    $this->redirectToRoute('index', 'index');
                 }
                 else
                 {
