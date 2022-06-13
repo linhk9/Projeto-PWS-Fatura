@@ -12,6 +12,9 @@
             if($auth->isLoggedIn())
             {
                 $username = $auth->getUsername();
+                $userRole = $auth->getRole();
+                $userEmail = $auth->getEmail();
+                $userId = $auth->getUserId();
             }
 
             require_once './views/layout/header.php';

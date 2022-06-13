@@ -30,7 +30,7 @@
         }
     </style>
 </head>
-<body>
+<body class="d-flex flex-column h-100">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="./router.php"><?= APP_NAME ?></a>
@@ -59,7 +59,7 @@
                     ?>
                 </li>
                 <?php
-                    if(isset($username))
+                    if(isset($username) && ($userRole === 'Administrador' || $userRole === 'Funcionario'))
                     {
                         ?>
                         <li>

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Faturas</title>
 </head>
-<body>
+<body class="d-flex flex-column h-100">
 <div class="col-lg-8 mx-auto">
     <h1 class="display-4">Faturas</h1>
 </div>

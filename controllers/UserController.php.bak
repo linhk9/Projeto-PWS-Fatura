@@ -22,9 +22,7 @@
                 $user = User::find([$id]);
                 if(!isset($_POST['password'])) {
                     $_POST['password'] = $user->password;
-                } else {
-					$_POST['password'] = md5($_POST['password']);
-				}
+                }
                 $user->update_attributes($_POST);
                 if($user->is_valid()){
                     $user->save();
