@@ -1,10 +1,34 @@
-<html>
+<html lang="pt">
 <head>
     <title><?= APP_NAME ?></title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="./public/css/bootstrap.min.css" rel="stylesheet">
     <link href="./public/css/style.css" rel="stylesheet">
+
+    <style>
+        .form-control {
+            max-width: 330px;
+            padding: 15px;
+        }
+
+        .form-control .form-floating:focus-within {
+            z-index: 2;
+        }
+
+        .form-control input[type="name"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .form-control input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
