@@ -1,5 +1,5 @@
 <body class="d-flex flex-column h-100">
-    <div class="container justify-content-center">
+    <div class="container justify-content-center"><br>
         <h1 class="fw-bold text-center">Gestão de Utilizador</h1>
             <?php if($userRole === 'Administrador' || $userRole === 'Funcionario') { ?>
                 <table class="table table-hover">
@@ -35,7 +35,8 @@
                         <?php }}?>
                     </tbody>
                 </table>
-            <?php }?>
+
+            <?php  }?>
         <?php
         if (isset($users)){
             foreach ($users as $user) {
@@ -53,23 +54,37 @@
                                     <h1 class="h3 mb-3 fw-normal text-center">User ID #<?php echo $user -> id?></h1>
 
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control rounded-3" id="username" value="<?php echo $user -> username?>">
+                                        <input type="text" class="form-control rounded-3" name="username" id="username" value="<?php echo $user -> username?>">
                                         <label for="username">Username</label>
                                     </div>
 
                                     <div class="form-floating mb-3">
-                                        <input type="email" class="form-control rounded-3" id="email" value="<?php echo $user -> email?>">
+                                        <input type="email" class="form-control rounded-3" name="email" id="email" value="<?php echo $user -> email?>">
                                         <label for="email">Email</label>
                                     </div>
-
                                     <div class="form-floating mb-3">
-                                        <input type="password" class="form-control rounded-3" id="password" placeholder="Password">
+                                        <input type="password" class="form-control rounded-3" name="password" id="password" placeholder="Password">
                                         <label for="floatingPassword">Password</label>
                                     </div>
-
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control rounded-3" id="role" value="<?php echo $user -> role?>">
-                                        <label for="role">Password</label>
+                                        <input type="text" class="form-control rounded-3" name="telefone" id="telefone" value="<?php echo $user -> telefone?>" >
+                                        <label for="telefone">Telefone</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control rounded-3" name="morada" id="morada" value="<?php echo $user -> morada?>" >
+                                        <label for="morada">Morada</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control rounded-3" name="codigopostal" id="codigopostal" value="<?php echo $user -> codigopostal?>" >
+                                        <label for="codigopostal">Código-Postal</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control rounded-3" name="localidade" id="local" value="<?php echo $user -> localidade?>" >
+                                        <label for="local">Localidade</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control rounded-3" name="role" id="role" value="<?php echo $user -> role?>" disabled>
+                                        <label for="role">Role</label>
                                     </div>
 
                                     <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Guardar</button>

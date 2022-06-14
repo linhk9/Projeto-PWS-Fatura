@@ -14,27 +14,17 @@
             $users->delete();
             $this->redirectToRoute('user', 'index');
         }
-        public function update($id)
-        {
-            $users = User::all();
-            if((isset($_POST['username'], $_POST['email'], $_POST['role'])))
+        public function update($id){
+ 
+            if((isset($_POST)))
             {
                 $user = User::find([$id]);
-                if(!isset($_POST['password'])) {
-                    $_POST['password'] = $user->password;
-                } else {
-					$_POST['password'] = md5($_POST['password']);
-				}
+                $_POST['password'] = md5($_POST['password']);
                 $user->update_attributes($_POST);
                 if($user->is_valid()){
                     $user->save();
-                    $this->redirectToRoute('user', 'index');
                 }
             }
-            else
-            {
-                $users = User::find([$id]);
-                $this->redirectToRoute('user', 'index');
-            }
+            $this->redirectToRoute('user', 'index');
         }
     }

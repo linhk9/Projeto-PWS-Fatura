@@ -6,6 +6,7 @@
     require_once './controllers/LoginController.php';
     require_once './controllers/FaturaController.php';
     require_once './controllers/UserController.php';
+    require_once './controllers/RegisterController.php';
 
     if(!isset($_GET['c'], $_GET['a']))
     {
@@ -35,6 +36,18 @@
 
                     case "logout":
                         $controller->logout();
+                }
+                break;
+            case 'register':
+                $controller = new RegisterController();
+                switch ($a)
+                {
+                    case "index":
+                        $controller->index();
+                        break;
+                    case 'register':
+                        $controller->register();
+                        break;
                 }
                 break;
 

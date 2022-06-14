@@ -59,18 +59,21 @@
                     ?>
                 </li>
                 <?php
-                    if(isset($username) && ($userRole === 'Administrador' || $userRole === 'Funcionario'))
-                    {
-                        ?>
+                    if(isset($username) && ($userRole === 'Administrador' || $userRole === 'Funcionario')) { ?>
                         <li>
                             <a class="nav-link" href="./router.php?c=fatura&a=index">Faturas</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./router.php?c=user&a=index">Gestão de Utilizador</a>
                         </li>
-                        <?php
-                    }
-                ?>
+                    <?php }
+                    if (isset($username) && ($userRole === 'Administrador')) {
+                        ?>
+                        <li>
+                            <a class="nav-link" href="./router.php?c=register&a=index">Register Utilizadores</a>
+                        </li>
+                        <?php 
+                } ?>
             </ul>
         </div>
     </div>
