@@ -60,11 +60,20 @@
                 </li>
                 <?php
                     if(isset($username) && ($userRole === 'Administrador' || $userRole === 'Funcionario')) { ?>
-                        <li>
-                            <a class="nav-link" href="./router.php?c=fatura&a=index">Faturas</a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./router.php?c=user&a=index">Gestão de Utilizador</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Empresa
+                          </a>
+                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Gestão de Produtos e Stocks</a></li>
+                            <li><a class="dropdown-item" href="#">Gestão do Iva</a></li>
+                            <li><a class="dropdown-item" href="#">Gestão Dados Empresa</a></li>
+                            <li><a class="dropdown-item" href="./router.php?c=fatura&a=index">Faturas</a></li>
+                            <li><a class="dropdown-item" href="./router.php?c=fatura&a=historico">Histórico Faturas</a></li>
+                          </ul>
                         </li>
                     <?php }
                     if (isset($username) && ($userRole === 'Administrador')) {
