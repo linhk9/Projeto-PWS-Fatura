@@ -13,7 +13,6 @@
             {
                 $username = $auth->getUsername();
                 $userRole = $auth->getRole();
-                $userEmail = $auth->getEmail();
                 $userId = $auth->getUserId();
             }
 

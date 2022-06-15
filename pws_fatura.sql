@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 07-Jun-2022 às 19:21
+-- Tempo de geração: 15-Jun-2022 às 14:33
 -- Versão do servidor: 5.7.36
 -- versão do PHP: 7.4.26
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `pws_fatura`
 --
+CREATE DATABASE IF NOT EXISTS `pws_fatura` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `pws_fatura`;
 
 -- --------------------------------------------------------
 
@@ -83,6 +85,15 @@ CREATE TABLE IF NOT EXISTS `ivas` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `ivas`
+--
+
+INSERT INTO `ivas` (`id`, `percentagem`, `descricao`, `vigor`) VALUES
+(1, 23, 'Taxa Normal', 1),
+(2, 13, 'Taxa Intermédia', 1),
+(3, 6, 'Taxa Reduzida', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -139,14 +150,19 @@ CREATE TABLE IF NOT EXISTS `users` (
   `localidade` varchar(255) DEFAULT NULL,
   `role` enum('Cliente','Funcionario','Administrador') DEFAULT 'Cliente',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `telefone`, `nif`, `morada`, `codigoPostal`, `localidade`, `role`) VALUES
-(1, 'filipe', '81dc9bdb52d04dc20036dbd8313ed055', 'filipemarques333@gmail.com', 913194666, 1234567891, 'Rua dos Colos', '1234-123', 'Porto de Mós', 'Administrador');
+(1, 'filipe', '81dc9bdb52d04dc20036dbd8313ed055', 'filipemarques333@gmail.com', 913194666, 1234567891, 'Rua dos Colos', '1234-123', 'Porto de Mós', 'Administrador'),
+(2, 'rodrigo', '81dc9bdb52d04dc20036dbd8313ed055', 'rodrigo@gmail.com', 913194222, 423267591, 'Rua dos Colos', '1224-123', 'Porto de Mï¿½s', 'Funcionario'),
+(9, 'ricardo', '81dc9bdb52d04dc20036dbd8313ed055', 'ricardo@gmail.com', 912131941, 123411111, 'Rua fixe', '1234-123', 'Porto', 'Funcionario'),
+(10, 'Cliente1', '827ccb0eea8a706c4c34a16891f84e7b', 'cliente1@gmail.com', 913194665, 123421412, 'Rua principal', '4124-123', 'Leiria', 'Cliente'),
+(11, 'Cliente2', '827ccb0eea8a706c4c34a16891f84e7b', 'cliente2@gmail.com', 913194665, 123421412, 'Rua principal', '4124-123', 'Leiria', 'Cliente'),
+(12, 'Cliente3', '827ccb0eea8a706c4c34a16891f84e7b', 'cliente3@gmail.com', 913194665, 123421412, 'Rua principal', '4124-123', 'Leiria', 'Cliente');
 
 --
 -- Restrições para despejos de tabelas

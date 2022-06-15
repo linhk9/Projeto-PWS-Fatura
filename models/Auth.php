@@ -44,11 +44,6 @@
             return $_SESSION['role'] ?? null;
         }
 
-        public function getEmail()
-        {
-            return $_SESSION['email'] ?? null;
-        }
-
         public function getUserId()
         {
             return $_SESSION['user_id'] ?? null;
