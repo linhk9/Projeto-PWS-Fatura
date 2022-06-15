@@ -54,37 +54,51 @@
                                     <h1 class="h3 mb-3 fw-normal text-center">User ID #<?php echo $user -> id?></h1>
 
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control rounded-3" name="username" id="username" value="<?php echo $user -> username?>">
+                                        <input type="text" class="form-control rounded-3" name="username" id="username" value="<?php echo $user -> username?>" placeholder="username">
                                         <label for="username">Username</label>
                                     </div>
 
                                     <div class="form-floating mb-3">
-                                        <input type="email" class="form-control rounded-3" name="email" id="email" value="<?php echo $user -> email?>">
+                                        <input type="email" class="form-control rounded-3" name="email" id="email" value="<?php echo $user -> email?>" placeholder="email">
                                         <label for="email">Email</label>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input type="password" class="form-control rounded-3" name="password" id="password" placeholder="Password">
-                                        <label for="floatingPassword">Password</label>
+                                        <input type="password" class="form-control rounded-3" name="password" id="password" value="<?php echo $user -> password?>" placeholder="Password">
+                                        <label for="password">Password</label>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control rounded-3" name="telefone" id="telefone" value="<?php echo $user -> telefone?>" >
+                                        <input type="text" class="form-control rounded-3" name="telefone" id="telefone" value="<?php echo $user -> telefone?>" placeholder="telefone">
                                         <label for="telefone">Telefone</label>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control rounded-3" name="morada" id="morada" value="<?php echo $user -> morada?>" >
+                                        <input type="text" class="form-control rounded-3" name="morada" id="morada" value="<?php echo $user -> morada?>" placeholder="morada">
                                         <label for="morada">Morada</label>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control rounded-3" name="codigopostal" id="codigopostal" value="<?php echo $user -> codigopostal?>" >
+                                        <input type="text" class="form-control rounded-3" name="codigopostal" id="codigopostal" value="<?php echo $user -> codigopostal?>" placeholder="codigo postal">
                                         <label for="codigopostal">Código-Postal</label>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control rounded-3" name="localidade" id="local" value="<?php echo $user -> localidade?>" >
+                                        <input type="text" class="form-control rounded-3" name="localidade" id="local" value="<?php echo $user -> localidade?>" placeholder="localidade">
                                         <label for="local">Localidade</label>
                                     </div>
-                                    <div class="form-floating mb-3">
-                                        <input type="text" class="form-control rounded-3" name="role" id="role" value="<?php echo $user -> role?>" disabled>
-                                        <label for="role">Role</label>
+                                    <div class="form-group mb-3">
+                                        <label for="role">Role:</label>
+                                        <select class="form-control" id="role" name="role">
+                                            <?php
+                                                if ($userRole === 'Administrador') {
+                                                    ?>
+                                                        <option value="Administrador" <?php if($user -> role === "Administrador") { echo 'selected'; } ?>>Administrador</option>
+                                                        <option value="Funcionario" <?php if($user -> role === "Funcionario") { echo 'selected'; } ?>>Funcionario</option>
+                                                        <option value="Cliente" <?php if($user -> role === "Cliente") { echo 'selected'; } ?>>Cliente</option>
+                                                    <?php
+                                                        } elseif ($userRole === 'Funcionario') {
+                                                    ?>
+                                                        <option value="Cliente" <?php if($user -> role === "Cliente") { echo 'selected'; } ?> disabled>Cliente</option>
+                                                    <?php
+                                                }
+                                            ?>
+                                        </select>
                                     </div>
 
                                     <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Guardar</button>

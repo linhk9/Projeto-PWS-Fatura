@@ -3,7 +3,6 @@
     <title><?= APP_NAME ?></title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="./public/css/bootstrap.min.css" rel="stylesheet">
     <link href="./public/css/style.css" rel="stylesheet">
 
@@ -63,26 +62,25 @@
                         <li class="nav-item">
                             <a class="nav-link" href="./router.php?c=user&a=index">Gestão de Utilizador</a>
                         </li>
-                        <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Empresa
-                          </a>
-                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Gestão de Produtos e Stocks</a></li>
-                            <li><a class="dropdown-item" href="#">Gestão do Iva</a></li>
-                            <li><a class="dropdown-item" href="#">Gestão Dados Empresa</a></li>
-                            <li><a class="dropdown-item" href="./router.php?c=fatura&a=index">Faturas</a></li>
-                            <li><a class="dropdown-item" href="./router.php?c=fatura&a=historico">Histórico Faturas</a></li>
-                          </ul>
-                        </li>
-                    <?php }
-                    if (isset($username) && ($userRole === 'Administrador')) {
-                        ?>
+
                         <li>
-                            <a class="nav-link" href="./router.php?c=register&a=index">Register Utilizadores</a>
+                            <a class="nav-link" href="./router.php?c=register&a=index">Registar Utilizador</a>
                         </li>
-                        <?php 
-                } ?>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Empresa
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">Gestão de Produtos e Stocks</a></li>
+                                <li><a class="dropdown-item" href="#">Gestão do Iva</a></li>
+                                <li><a class="dropdown-item" href="#">Gestão Dados Empresa</a></li>
+                                <li><a class="dropdown-item" href="./router.php?c=fatura&a=index">Faturas</a></li>
+                                <li><a class="dropdown-item" href="./router.php?c=fatura&a=historico">Histórico Faturas</a></li>
+                            </ul>
+                        </li>
+                <?php }
+                ?>
             </ul>
         </div>
     </div>

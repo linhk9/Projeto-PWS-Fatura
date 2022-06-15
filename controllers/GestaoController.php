@@ -4,7 +4,7 @@
 
     class GestaoController extends BaseAuthController
     {
-        public function iva()
+        public function index()
         {
             $iva = Iva::all();
             if (isset($_POST)){

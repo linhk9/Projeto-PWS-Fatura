@@ -9,12 +9,12 @@
             <h1 class="h3 mb-3 fw-normal text-center">Login</h1>
 
             <div class="form-floating">
-                <input class="form-control" type="text" id="name" name="name"><br>
+                <input class="form-control" type="text" id="name" name="name" placeholder="Username"><br>
                 <label for="name">Nome</label>
             </div>
 
             <div class="form-floating">
-                <input class="form-control" type="password" id="password" name="password">
+                <input class="form-control" type="password" id="password" name="password" placeholder="Password">
                 <label for="password">Password</label>
             </div>
 
