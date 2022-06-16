@@ -9,6 +9,7 @@
     require_once './controllers/EmpresaController.php';
     require_once './controllers/IvaController.php';
     require_once './controllers/ProdutoController.php';
+    require_once './controllers/FaturaController.php';
 
     if(!isset($_GET['c'], $_GET['a']))
     {
@@ -106,6 +107,7 @@
                         break;
                 }
                 break;
+
             case "produto":
                 $controller = new ProdutoController();
                 switch ($a)
@@ -121,6 +123,31 @@
                         break;
                     case "create":
                         $controller->create();
+                        break;
+                }
+                break;
+
+            case "fatura":
+                $controller = new FaturaController();
+                switch ($a)
+                {
+                    case "index":
+                        $controller->index();
+                        break;
+                    case "historico":
+                        $controller->historico();
+                        break;
+                    case "produtos":
+                        $controller->produtos();
+                        break;
+                    case "addProduto":
+                        $controller->linhaFatura($_GET['cId'], $_GET['fId'], $_GET['pId']);
+                        break;
+                    case "carrinho":
+                        $controller->carrinho($_GET['cId'], $_GET['fId']);
+                        break;
+                    case "checkout":
+                        $controller->checkout($_GET['fId']);
                         break;
                 }
                 break;

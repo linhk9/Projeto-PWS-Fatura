@@ -13,7 +13,7 @@
         {
             $produto = Produto::find([$id]);
             $produto->delete();
-            $this->redirectToRoute('produto', 'index');
+            $this->index();
         }
 
         public function update($id){
@@ -26,7 +26,7 @@
                     $produto->save();
                 }
             }
-            $this->redirectToRoute('produto', 'index');
+            $this->index();
         }
 
         public function create()
@@ -39,9 +39,9 @@
                 if($produto->is_valid()){
                     $produto->save();
                 }
-                $this->redirectToRoute('site', 'index');
+                $this->index();
             } else {
-                $this->redirectToRoute('produto', 'index');
+                $this->index();
             }
         }
     }
