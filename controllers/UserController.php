@@ -10,8 +10,8 @@
 
         public function delete($id)
         {
-            $users = User::find([$id]);
-            $users->delete();
+            $user = User::find([$id]);
+            $user->delete();
             $this->redirectToRoute('user', 'index');
         }
 

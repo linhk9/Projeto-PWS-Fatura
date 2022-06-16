@@ -4,9 +4,10 @@
     require_once './controllers/BaseAuthController.php';
     require_once './controllers/SiteController.php';
     require_once './controllers/LoginController.php';
-    require_once './controllers/FaturaController.php';
     require_once './controllers/UserController.php';
     require_once './controllers/RegisterController.php';
+    require_once './controllers/EmpresaController.php';
+    require_once './controllers/IvaController.php';
 
     if(!isset($_GET['c'], $_GET['a']))
     {
@@ -51,16 +52,6 @@
                 }
                 break;
 
-            case "fatura":
-                $controller = new FaturaController();
-                switch ($a)
-                {
-                    case "index":
-                        $controller->index();
-                        break;
-                }
-                break;
-
             case "user":
                 $controller = new UserController();
                 switch ($a)
@@ -73,6 +64,44 @@
                         break;
                     case "update":
                         $controller->update($_GET['id']);
+                        break;
+                }
+                break;
+
+            case "empresa":
+                $controller = new EmpresaController();
+                switch ($a)
+                {
+                    case "index":
+                        $controller->index();
+                        break;
+                    case "destroy":
+                        $controller->delete($_GET['id']);
+                        break;
+                    case "update":
+                        $controller->update($_GET['id']);
+                        break;
+                    case "create":
+                        $controller->create();
+                        break;
+                }
+                break;
+
+            case "iva":
+                $controller = new IvaController();
+                switch ($a)
+                {
+                    case "index":
+                        $controller->index();
+                        break;
+                    case "destroy":
+                        $controller->delete($_GET['id']);
+                        break;
+                    case "update":
+                        $controller->update($_GET['id']);
+                        break;
+                    case "create":
+                        $controller->create();
                         break;
                 }
                 break;

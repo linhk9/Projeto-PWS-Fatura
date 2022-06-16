@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 15-Jun-2022 às 14:33
+-- Tempo de geração: 16-Jun-2022 às 14:56
 -- Versão do servidor: 5.7.36
 -- versão do PHP: 7.4.26
 
@@ -32,14 +32,14 @@ USE `pws_fatura`;
 DROP TABLE IF EXISTS `empresas`;
 CREATE TABLE IF NOT EXISTS `empresas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `designacaoSocial` varchar(255) DEFAULT NULL,
+  `designacaosocial` varchar(255) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `telefone` int(9) DEFAULT NULL,
   `nif` int(11) DEFAULT NULL,
   `morada` varchar(255) DEFAULT NULL,
-  `codigoPostal` varchar(255) DEFAULT NULL,
+  `codigopostal` varchar(255) DEFAULT NULL,
   `localidade` varchar(255) DEFAULT NULL,
-  `capitalSocial` float DEFAULT NULL,
+  `capitalsocial` float DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
@@ -47,8 +47,8 @@ CREATE TABLE IF NOT EXISTS `empresas` (
 -- Extraindo dados da tabela `empresas`
 --
 
-INSERT INTO `empresas` (`id`, `designacaoSocial`, `email`, `telefone`, `nif`, `morada`, `codigoPostal`, `localidade`, `capitalSocial`) VALUES
-(1, 'XPTO', 'xpto@gmail.com', 244123321, 1234567891, 'Rua Central', '1234-123', 'Leiria', 100);
+INSERT INTO `empresas` (`id`, `designacaosocial`, `email`, `telefone`, `nif`, `morada`, `codigopostal`, `localidade`, `capitalsocial`) VALUES
+(1, 'XPTO', 'xpto@gmail.com', 244123321, 123456789, 'Rua Central', '1234-123', 'Leiria', 10000);
 
 -- --------------------------------------------------------
 
@@ -60,8 +60,8 @@ DROP TABLE IF EXISTS `faturas`;
 CREATE TABLE IF NOT EXISTS `faturas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `data` date DEFAULT NULL,
-  `valoraTotal` int(11) DEFAULT NULL,
-  `ivaTotal` int(11) DEFAULT NULL,
+  `valoratotal` int(11) DEFAULT NULL,
+  `ivatotal` int(11) DEFAULT NULL,
   `estado` enum('Em Lançamento','Emitida') DEFAULT NULL,
   `cliente_id` int(11) DEFAULT NULL,
   `funcionario_id` int(11) NOT NULL,
@@ -78,12 +78,12 @@ CREATE TABLE IF NOT EXISTS `faturas` (
 
 DROP TABLE IF EXISTS `ivas`;
 CREATE TABLE IF NOT EXISTS `ivas` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `percentagem` int(11) DEFAULT NULL,
   `descricao` varchar(255) DEFAULT NULL,
   `vigor` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `ivas`
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `linhafaturas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `quantidade` int(11) DEFAULT NULL,
   `valor` int(11) DEFAULT NULL,
-  `valorIva` int(11) DEFAULT NULL,
+  `valoriva` int(11) DEFAULT NULL,
   `produto_id` int(11) NOT NULL,
   `fatura_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -146,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `telefone` int(9) DEFAULT NULL,
   `nif` int(11) DEFAULT NULL,
   `morada` varchar(255) DEFAULT NULL,
-  `codigoPostal` varchar(255) DEFAULT NULL,
+  `codigopostal` varchar(255) DEFAULT NULL,
   `localidade` varchar(255) DEFAULT NULL,
   `role` enum('Cliente','Funcionario','Administrador') DEFAULT 'Cliente',
   PRIMARY KEY (`id`)
@@ -156,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Extraindo dados da tabela `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `telefone`, `nif`, `morada`, `codigoPostal`, `localidade`, `role`) VALUES
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `telefone`, `nif`, `morada`, `codigopostal`, `localidade`, `role`) VALUES
 (1, 'filipe', '81dc9bdb52d04dc20036dbd8313ed055', 'filipemarques333@gmail.com', 913194666, 1234567891, 'Rua dos Colos', '1234-123', 'Porto de Mós', 'Administrador'),
 (2, 'rodrigo', '81dc9bdb52d04dc20036dbd8313ed055', 'rodrigo@gmail.com', 913194222, 423267591, 'Rua dos Colos', '1224-123', 'Porto de Mï¿½s', 'Funcionario'),
 (9, 'ricardo', '81dc9bdb52d04dc20036dbd8313ed055', 'ricardo@gmail.com', 912131941, 123411111, 'Rua fixe', '1234-123', 'Porto', 'Funcionario'),
