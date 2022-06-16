@@ -20,7 +20,7 @@
                     ?>
                     <tr>
                         <th scope="row"><?php echo $iva->id; ?></th>
-                        <td><?php echo $iva->percentagem; ?></td>
+                        <td><?php echo $iva->percentagem; ?>%</td>
                         <td><?php echo $iva->descricao; ?></td>
                         <td><?php echo $iva->vigor; ?></td>
 

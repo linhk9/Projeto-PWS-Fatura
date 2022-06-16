@@ -8,6 +8,7 @@
     require_once './controllers/RegisterController.php';
     require_once './controllers/EmpresaController.php';
     require_once './controllers/IvaController.php';
+    require_once './controllers/ProdutoController.php';
 
     if(!isset($_GET['c'], $_GET['a']))
     {
@@ -89,6 +90,24 @@
 
             case "iva":
                 $controller = new IvaController();
+                switch ($a)
+                {
+                    case "index":
+                        $controller->index();
+                        break;
+                    case "destroy":
+                        $controller->delete($_GET['id']);
+                        break;
+                    case "update":
+                        $controller->update($_GET['id']);
+                        break;
+                    case "create":
+                        $controller->create();
+                        break;
+                }
+                break;
+            case "produto":
+                $controller = new ProdutoController();
                 switch ($a)
                 {
                     case "index":
