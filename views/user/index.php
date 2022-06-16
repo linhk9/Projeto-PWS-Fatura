@@ -22,14 +22,30 @@
                             <td><?php echo $user -> username;?></td>
                             <td><?php echo $user -> email;?></td>
                             <td><?php echo $user -> role;?></td>
-                            <td><a data-bs-toggle="modal" data-bs-target="#editar<?php echo $user -> id?>" class="btn btn-primary" role="button">Editar</a></td>
                             <?php
-                                if ($userId !== $user -> id) {
-                                    echo '<td><a href="./router.php?c=user&a=destroy&id='.$user -> id.'" class="btn btn-primary" role="button">Apagar</a></td>';
-                                } else {
-                                    echo '<td><a class="btn btn-primary disabled" aria-disabled="true" role="button">Apagar</a></td>';
-                                }
+                                if ($userRole === 'Administrador') {
                             ?>
+                                <td><a data-bs-toggle="modal" data-bs-target="#editar<?php echo $user -> id?>" class="btn btn-primary" role="button">Editar</a></td>
+                                <?php
+                                    if ($userId !== $user -> id) {
+                                        echo '<td><a href="./router.php?c=user&a=destroy&id='.$user -> id.'" class="btn btn-primary" role="button">Apagar</a></td>';
+                                    } else {
+                                        echo '<td><a class="btn btn-primary disabled" aria-disabled="true" role="button">Apagar</a></td>';
+                                    }
+                                ?>
+                            <?php } elseif ($userRole === 'Funcionario' && $user->role === 'Cliente') {?>
+                                    <td><a data-bs-toggle="modal" data-bs-target="#editar<?php echo $user -> id?>" class="btn btn-primary" role="button">Editar</a></td>
+                                    <?php
+                                    if ($userId !== $user -> id) {
+                                        echo '<td><a href="./router.php?c=user&a=destroy&id='.$user -> id.'" class="btn btn-primary" role="button">Apagar</a></td>';
+                                    } else {
+                                        echo '<td><a class="btn btn-primary disabled" aria-disabled="true" role="button">Apagar</a></td>';
+                                    }
+                                    ?>
+                            <?php } else { ?>
+                                    <td><a class="btn btn-primary disabled" aria-disabled="true" role="button">Editar</a></td>
+                                    <td><a class="btn btn-primary disabled" aria-disabled="true" role="button">Apagar</a></td>
+                            <?php } ?>
                         </tr>
                     <?php }}?>
                 </tbody>

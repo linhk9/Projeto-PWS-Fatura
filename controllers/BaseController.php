@@ -14,6 +14,7 @@
                 $username = $auth->getUsername();
                 $userRole = $auth->getRole();
                 $userId = $auth->getUserId();
+
             }
 
             require_once './views/layout/header.php';

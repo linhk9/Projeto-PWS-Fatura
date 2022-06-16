@@ -80,8 +80,10 @@
                         </ul>
                     </li>
                 <?php }
+                    if (isset($username)) {
+                        echo '<li><a class="nav-link" href="./router.php?c=fatura&a=historico">Histórico Faturas</a></li>';
+                    }
                 ?>
-                <li><a class="nav-link" href="./router.php?c=fatura&a=historico">Histórico Faturas</a></li>
             </ul>
         </div>
     </div>
