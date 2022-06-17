@@ -38,17 +38,6 @@
             </td>
         </tr>
 
-        <tr class="heading">
-            <td>Payment Method</td>
-
-            <td>Check #</td>
-        </tr>
-
-        <tr class="details">
-            <td>Check</td>
-
-            <td>1000</td>
-        </tr>
 
         <tr class="heading">
             <td>Item</td>
@@ -56,11 +45,16 @@
             <td>Price</td>
         </tr>
 
-        <tr class="item">
-            <td>Website design</td>
+        <?php  if (isset($faturas)){
+            foreach ($faturas as $fatura) {
+                <tr class="item">
+                    <td><?php echo $fatura-></td>
 
-            <td>$300.00</td>
-        </tr>
+                    <td>$75.00</td>
+                </tr>
+            }
+        }
+        ?>
 
         <tr class="item">
             <td>Hosting (3 months)</td>
