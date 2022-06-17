@@ -130,10 +130,11 @@
             $this->redirectToRoute('fatura','carrinho',['fId' => $fatura->id, 'cId' => $fatura->cliente_id]);
         }
         public function vista($cId,$fId){
-            $linhaFaturas = Linhafatura::find('all',[$fId]);
+            $linhaFatura = Linhafatura::find('all',array('fatura_id' => $fId));
             $clientes = User::find([$cId]);
+            $fatura = Fatura::find([$fId]);
 
-            $this->renderView('fatura/vista',['linhafaturas' => $linhaFaturas, 'clientes' => $clientes ]);
+            $this->renderView('fatura/vista',['linhaFaturas' => $linhaFatura, 'cliente' => $clientes, 'fatura' => $fatura ]);
 
         }
     }

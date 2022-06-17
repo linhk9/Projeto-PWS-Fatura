@@ -9,9 +9,8 @@
                         </td>
 
                         <td>
-                            Invoice #: 123<br />
-                            Created: January 1, 2015<br />
-                            Due: February 1, 2015
+                            #:<?= $fatura -> id?><br />
+                            Data: <?= $fatura -> data?><br />
                         </td>
                     </tr>
                 </table>
@@ -23,15 +22,14 @@
                 <table>
                     <tr>
                         <td>
-                            Sparksuite, Inc.<br />
-                            12345 Sunny Road<br />
-                            Sunnyville, TX 12345
+                            <?= $cliente -> morada?><br />
+                            <?= $cliente -> localidade?><br />
+                            <?= $cliente -> codigopostal?>
                         </td>
 
                         <td>
-                            Acme Corp.<br />
-                            John Doe<br />
-                            john@example.com
+                            <?= $cliente -> username?><br />
+                            <?= $cliente -> email?>
                         </td>
                     </tr>
                 </table>
@@ -40,38 +38,40 @@
 
 
         <tr class="heading">
-            <td>Item</td>
+            <td>Produto</td>
 
-            <td>Price</td>
+            <td>Preço</td>
         </tr>
 
-        <?php  if (isset($faturas)){
-            foreach ($faturas as $fatura) {
-                <tr class="item">
-                    <td><?php echo $fatura-></td>
-
-                    <td>$75.00</td>
+        <?php
+        if (isset($linhaFaturas)){
+                foreach ($linhaFaturas as $linhafatura) {?>
+                    <tr class="item">
+                        <td><?php echo $linhafatura->produto->descricao?></td>
+                        <td><?php echo $linhafatura->valor?>€</td>
+                    </tr>
+               <?php }} ?>
+               <tr class="total">
+                <td>Valor iva</td>
+                <?php
+                if (isset($fatura)){?>
+                    <td><?= $fatura -> ivatotal ?>€</td>
+                <?php }?>
                 </tr>
-            }
-        }
-        ?>
+               <tr class="total">
+                <td>Valor Total sem Iva:</td>
+                <?php
+                if (isset($fatura)){?>  
+                    <td><?= $fatura -> valortotal ?>€</td>
+                <?php }?>
+                </tr>
+                <tr class="total">
+                <td>Valor Total com Iva:</td>
+                <?php
+                if (isset($fatura)){?>  
+                    <td><?= ($fatura -> valortotal)+($fatura -> ivatotal) ?>€</td>
+                <?php }?>
+                </tr>
 
-        <tr class="item">
-            <td>Hosting (3 months)</td>
-
-            <td>$75.00</td>
-        </tr>
-
-        <tr class="item last">
-            <td>Domain name (1 year)</td>
-
-            <td>$10.00</td>
-        </tr>
-
-        <tr class="total">
-            <td></td>
-
-            <td>Total: $385.00</td>
-        </tr>
     </table>
 </div>
