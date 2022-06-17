@@ -56,6 +56,7 @@
 
             case "user":
                 $controller = new UserController();
+                $controller->loginFilterByRole(['Administrador','Funcionario']);
                 switch ($a)
                 {
                     case "index":
@@ -72,6 +73,7 @@
 
             case "empresa":
                 $controller = new EmpresaController();
+                $controller->loginFilterByRole(['Administrador','Funcionario']);
                 switch ($a)
                 {
                     case "index":
@@ -91,6 +93,7 @@
 
             case "iva":
                 $controller = new IvaController();
+                $controller->loginFilterByRole(['Administrador','Funcionario']);
                 switch ($a)
                 {
                     case "index":
@@ -110,6 +113,7 @@
 
             case "produto":
                 $controller = new ProdutoController();
+                $controller->loginFilterByRole(['Administrador','Funcionario']);
                 switch ($a)
                 {
                     case "index":
@@ -132,22 +136,32 @@
                 switch ($a)
                 {
                     case "index":
+                        $controller->loginFilterByRole(['Administrador','Funcionario']);
                         $controller->index();
                         break;
                     case "historico":
+                        $controller->loginFilterByRole(['Administrador','Funcionario','Cliente']);
                         $controller->historico();
                         break;
                     case "produtos":
+                        $controller->loginFilterByRole(['Administrador','Funcionario']);
                         $controller->produtos();
                         break;
                     case "addProduto":
+                        $controller->loginFilterByRole(['Administrador','Funcionario']);
                         $controller->linhaFatura($_GET['cId'], $_GET['fId'], $_GET['pId']);
                         break;
                     case "carrinho":
+                        $controller->loginFilterByRole(['Administrador','Funcionario']);
                         $controller->carrinho($_GET['cId'], $_GET['fId']);
                         break;
                     case "checkout":
+                        $controller->loginFilterByRole(['Administrador','Funcionario']);
                         $controller->checkout($_GET['fId']);
+                        break;
+                    case "delete":
+                        $controller->loginFilterByRole(['Administrador','Funcionario']);
+                        $controller->delete($_GET['fId']);
                         break;
                 }
                 break;

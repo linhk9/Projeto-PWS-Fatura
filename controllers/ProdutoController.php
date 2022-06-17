@@ -3,7 +3,6 @@
     {
         public function index()
         {
-            $this->loginFilter();
             $produtos = Produto::all();
             $ivas = Iva::all();
             $this->renderView('produto/index', ['produtos' => $produtos, 'ivas' => $ivas]);
@@ -13,7 +12,7 @@
         {
             $produto = Produto::find([$id]);
             $produto->delete();
-            $this->index();
+            $produto -> redirectToRoute('produto', 'index');
         }
 
         public function update($id){
@@ -26,7 +25,7 @@
                     $produto->save();
                 }
             }
-            $this->index();
+            $produto -> redirectToRoute('produto', 'index');
         }
 
         public function create()
@@ -39,9 +38,9 @@
                 if($produto->is_valid()){
                     $produto->save();
                 }
-                $this->index();
+                $produto -> redirectToRoute('produto', 'index');
             } else {
-                $this->index();
+                $produto -> redirectToRoute('produto', 'index');
             }
         }
     }

@@ -1,5 +1,5 @@
 <?php
-    require_once './models/User.php';
+    require_once './models/Auth.php';
 
     class BaseController
     {
@@ -9,8 +9,7 @@
 
             $auth = new Auth();
 
-            if($auth->isLoggedIn())
-            {
+            if($auth->isLoggedIn()){
                 $username = $auth->getUsername();
                 $userRole = $auth->getRole();
                 $userId = $auth->getUserId();
@@ -21,9 +20,12 @@
             require_once './views/' . $view . '.php';
             require_once './views/layout/footer.php';
         }
+        public function redirectToRoute($controllerPrefix, $action, $params = []){
+            $url = 'Location: router.php?c='.$controllerPrefix.'&a='.$action;
 
-        protected function redirectToRoute($controllerPrefix, $action)
-        {
-            header('Location: ./router.php?c=' . $controllerPrefix . '&a=' . $action);
+            foreach ($params as $paramKey => $paramValue){
+                $url.='&'.$paramKey.'='.$paramValue;
+            }
+            header($url);
         }
     }

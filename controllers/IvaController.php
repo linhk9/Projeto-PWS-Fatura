@@ -3,7 +3,6 @@
     {
         public function index()
         {
-            $this->loginFilter();
             $ivas = Iva::all();
             $this->renderView('iva/index', ['ivas' => $ivas]);
         }

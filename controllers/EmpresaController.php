@@ -3,7 +3,6 @@
     {
         public function index()
         {
-            $this->loginFilter();
             $empresas = Empresa::all();
             $this->renderView('empresa/index', ['empresas' => $empresas]);
         }

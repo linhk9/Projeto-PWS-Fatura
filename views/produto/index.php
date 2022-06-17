@@ -1,7 +1,6 @@
 <div class="container justify-content-center"><br>
     <?php if ($userRole === 'Administrador' || $userRole === 'Funcionario') { ?>
-        <h1 class="fw-bold text-center">Gestão de Produto <a data-bs-toggle="modal" data-bs-target="#addProduto"
-                                                             class="btn btn-primary" role="button">Adicionar</a></h1>
+        <h1 class="fw-bold text-center">Gestão de Produto <a data-bs-toggle="modal" data-bs-target="#addProduto" class="btn btn-primary" role="button">Adicionar</a></h1>
         <table class="table table-hover">
             <thead>
             <tr>

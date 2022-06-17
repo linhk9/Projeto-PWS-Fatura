@@ -5,7 +5,6 @@
     {
         public function index()
         {
-            $this->loginFilter();
             $this->renderView('register/index');
         }
 

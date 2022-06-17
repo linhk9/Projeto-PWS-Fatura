@@ -43,7 +43,9 @@
                                             <td class="text-right font-weight-semibold align-middle p-4"><?= $linhafatura->valoriva ?></td>
                                             <td class="text-right font-weight-semibold align-middle p-4"><?= $linhafatura->valor ?></td>
                                             <td class="text-right font-weight-semibold align-middle p-4"><?= $linhafatura->quantidade ?></td>
-                                            <td class="text-center align-middle px-0"><a href="#" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>
+                                            <td class="text-center align-middle px-0">
+                                                <a href="./router.php?c=fatura&a=delete&fId=<?= $linhafatura->id ?>" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">X</a>
+                                            </td>
                                         </tr>
                                     <?php
                                         }

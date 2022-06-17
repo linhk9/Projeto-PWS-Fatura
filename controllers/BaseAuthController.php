@@ -3,7 +3,7 @@
 
     class BaseAuthController extends BaseController
     {
-        protected function loginFilter()
+        public function __construct()
         {
             $auth = new Auth();
 
@@ -11,5 +11,16 @@
             {
                 header('Location: ./router.php?' . INVALID_ACCESS_ROUTE);
             }
+        }
+
+        public function loginFilterByRole($roles = []){
+            $auth = new Auth();
+
+            $role = $auth->getRole();
+
+            if(!in_array($role,$roles)){
+                header('Location: ./router.php?' . INVALID_ACCESS_ROUTE);
+            }
+
         }
     }

@@ -1,11 +1,13 @@
 <?php
+    require_once './models/User.php';
+    require_once './models/Fatura.php';
+    require_once './models/Linhafatura.php';
+
     class FaturaController extends BaseAuthController
     {
         public function index()
         {
-            $this->loginFilter();
             $clientes = User::find('all', array('role' => 'Cliente'));
-
             $this->renderView('fatura/index', ['clientes' => $clientes]);
         }
 
@@ -38,12 +40,17 @@
 
         public function linhaFatura($cId, $fId, $pId)
         {
-            $quantidade = 1;
+            if (isset($_POST['quantidade_'.$pId])) {
+                $quantidade = $_POST['quantidade_'.$pId];
+            }else{
+                $quantidade = 1;
+            }
 
             if(isset($cId, $fId, $pId, $quantidade))
             {
                 $produtos = Produto::all();
                 $produto = Produto::find('first', [$pId]);
+                $fatura = Fatura::find([$fId]); 
                 $linhaFatura = new Linhafatura();
 
                 $linhaFatura->update_attributes(array(
@@ -54,7 +61,17 @@
                     'fatura_id' => $fId
                 ));
                 if($linhaFatura->is_valid()){
+
+                    $fatura->update_attributes(array(
+                        'valortotal' => $fatura -> valortotal + $linhaFatura -> valor,
+                        'ivatotal' => $fatura -> ivatotal + $linhaFatura -> valoriva
+                    ));
                     $linhaFatura->save();
+
+                }
+                
+                if($fatura->is_valid()){
+                    $fatura->save();
                 }
                 $this->renderView('fatura/produtos', ['fatura_id' => $fId, 'cliente_id' => $cId, 'produtos' => $produtos]);
             }
@@ -64,6 +81,7 @@
         {
             if(isset($cId, $fId)) {
                 $linhafaturas = Linhafatura::all(array('fatura_id' => $fId));
+
 
                 $this->renderView('fatura/carrinho', ['fatura_id' => $fId, 'cliente_id' => $cId, 'linhafaturas' => $linhafaturas]);
             } else {
@@ -79,8 +97,9 @@
                 $fatura->update_attributes(array(
                     'valortotal' => $_POST['valorTotal'],
                     'ivatotal' => $_POST['valorIvaTotal'],
-                    'estado' => 'Emitida',
+                    'estado' => 'Emitida'
                 ));
+
                 if($fatura->is_valid()){
                     $fatura->save();
                 }
@@ -91,6 +110,23 @@
         public function historico()
         {
             $faturas = Fatura::all();
-            $this->renderView('fatura/historico', ['faturas' => $faturas]);
+            $clientes = User::all();
+            $this->renderView('fatura/historico', ['faturas' => $faturas, 'clientes' => $clientes]);
+        }
+        public function delete($fId){
+            $linhaFatura = Linhafatura::find([$fId]);
+            $fatura = Fatura::find([$linhaFatura->fatura_id]); 
+            if($linhaFatura->is_valid()){
+                    $fatura->update_attributes(array(
+                    'valortotal' => $fatura -> valortotal - $linhaFatura -> valor,
+                    'ivatotal' => $fatura -> ivatotal - $linhaFatura -> valoriva
+                ));                
+                if($fatura->is_valid()){
+                    $fatura->save();
+                }
+                $linhaFatura->delete();
+
+            }
+            $this->redirectToRoute('fatura','carrinho',['fId' => $fatura->id, 'cId' => $fatura->cliente_id]);
         }
     }
