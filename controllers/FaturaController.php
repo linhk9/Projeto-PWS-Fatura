@@ -129,4 +129,7 @@
             }
             $this->redirectToRoute('fatura','carrinho',['fId' => $fatura->id, 'cId' => $fatura->cliente_id]);
         }
+        public function vista($cId,$fId){
+            $this->renderView('fatura/vista');
+        }
     }

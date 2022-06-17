@@ -28,17 +28,20 @@
                                 foreach ($clientes as $cliente){
                                     if ($fatura -> cliente_id == $cliente -> id){?>
                                         <td><?php echo $cliente-> username; ?></td>
-                            <?php }}}
+                            <?php }}
                             foreach ($clientes as $cliente){
                                 if ($fatura -> funcionario_id  == $cliente -> id) {?>
                                     <td><?php echo $cliente-> username ;?></td>
-                            <?php }}
-                            //if ($userRole === 'Administrador' || $userRole === 'Funcionario') {
+                            <?php }}}
+                            if ($userRole === 'Administrador' || $userRole === 'Funcionario') {
                                 ?>
-                                <!--<td>
+                                <td>
                                     <a href="./router.php?c=fatura&a=carrinho&cId=<?= $fatura -> cliente_id?>&fId=<?= $fatura -> id?>" class="btn btn-primary" role="button">Editar</a>
-                                </td>-->
-                            <?php//}?>
+                                </td>
+                                <td>
+                                    <a href="./router.php?c=fatura&a=vista&cId=<?= $fatura -> cliente_id?>&fId=<?= $fatura -> id?>" class="btn btn-primary" role="button">Ver Fatura</a>
+                                </td>
+                            <?php } ?>
                         </tr>
                     <?php }}} ?>
             </tbody>

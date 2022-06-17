@@ -163,6 +163,10 @@
                         $controller->loginFilterByRole(['Administrador','Funcionario']);
                         $controller->delete($_GET['fId']);
                         break;
+                    case "vista":
+                        $controller->loginFilterByRole(['Administrador','Funcionario','Cliente']);
+                        $controller->vista($_GET['cId'], $_GET['fId']);
+                        break;
                 }
                 break;
 
