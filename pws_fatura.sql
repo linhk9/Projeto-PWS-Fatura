@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 16-Jun-2022 às 22:48
+-- Tempo de geração: 17-Jun-2022 às 15:00
 -- Versão do servidor: 5.7.36
 -- versão do PHP: 7.4.26
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `pws_fatura`
 --
-CREATE DATABASE IF NOT EXISTS `pws_fatura` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `pws_fatura`;
 
 -- --------------------------------------------------------
 
@@ -68,15 +66,16 @@ CREATE TABLE IF NOT EXISTS `faturas` (
   PRIMARY KEY (`id`),
   KEY `cliente_id` (`cliente_id`),
   KEY `funcionario_id` (`funcionario_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `faturas`
 --
 
 INSERT INTO `faturas` (`id`, `data`, `valortotal`, `ivatotal`, `estado`, `cliente_id`, `funcionario_id`) VALUES
-(10, '2022-06-16 20:12:56', 37.92, 8.7216, 'Emitida', 11, 1),
-(49, '2022-06-16 22:38:04', 33.96, 7.8108, 'Emitida', 10, 1);
+(72, '2022-06-17 13:03:48', 2.3, 0.529, 'Emitida', 13, 9),
+(73, '2022-06-17 13:48:49', 2.3, 0.529, 'Em Lancamento', 10, 9),
+(74, '2022-06-17 14:58:54', 0, 0, 'Em Lancamento', 10, 1);
 
 -- --------------------------------------------------------
 
@@ -119,22 +118,17 @@ CREATE TABLE IF NOT EXISTS `linhafaturas` (
   PRIMARY KEY (`id`),
   KEY `produto_id` (`produto_id`),
   KEY `fatura_id` (`fatura_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=146 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `linhafaturas`
 --
 
 INSERT INTO `linhafaturas` (`id`, `quantidade`, `valor`, `valoriva`, `produto_id`, `fatura_id`) VALUES
-(12, 1, 17.99, 4.1377, 9, 10),
-(13, 1, 1.94, 0.4462, 10, 10),
-(22, 1, 17.99, 4.1377, 9, 10),
-(84, 1, 2.5, 0.575, 3, 49),
-(85, 1, 2.5, 0.575, 3, 49),
-(86, 1, 0.79, 0.1817, 4, 49),
-(87, 1, 0.79, 0.1817, 4, 49),
-(88, 1, 17.99, 4.1377, 9, 49),
-(89, 1, 9.39, 2.1597, 8, 49);
+(138, 1, 1.1, 0.253, 1, 72),
+(139, 1, 1.2, 0.276, 2, 72),
+(140, 1, 1.1, 0.253, 1, 73),
+(141, 1, 1.2, 0.276, 2, 73);
 
 -- --------------------------------------------------------
 
@@ -189,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `localidade` varchar(255) DEFAULT NULL,
   `role` enum('Cliente','Funcionario','Administrador') DEFAULT 'Cliente',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `users`
@@ -201,7 +195,8 @@ INSERT INTO `users` (`id`, `username`, `password`, `email`, `telefone`, `nif`, `
 (9, 'ricardo', '81dc9bdb52d04dc20036dbd8313ed055', 'ricardo@gmail.com', 912131941, 123411111, 'Rua fixe', '1234-123', 'Porto', 'Funcionario'),
 (10, 'Cliente1', '827ccb0eea8a706c4c34a16891f84e7b', 'cliente1@gmail.com', 913194665, 123421412, 'Rua principal', '4124-123', 'Leiria', 'Cliente'),
 (11, 'Cliente2', '827ccb0eea8a706c4c34a16891f84e7b', 'cliente2@gmail.com', 913194665, 123421412, 'Rua principal', '4124-123', 'Leiria', 'Cliente'),
-(12, 'Cliente3', '827ccb0eea8a706c4c34a16891f84e7b', 'cliente3@gmail.com', 913194665, 123421412, 'Rua principal', '4124-123', 'Leiria', 'Cliente');
+(12, 'Cliente3', '827ccb0eea8a706c4c34a16891f84e7b', 'cliente3@gmail.com', 913194665, 123421412, 'Rua principal', '4124-123', 'Leiria', 'Cliente'),
+(13, 'userteste', 'd93591bdf7860e1e4ee2fca799911215', 'ricsantos2003@hotmail.com', 913194661, 123456789, 'Rua da mae do marcio', '8500-001', 'portimao', 'Cliente');
 
 --
 -- Restrições para despejos de tabelas
