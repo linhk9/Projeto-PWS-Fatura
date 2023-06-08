@@ -1,9 +1,12 @@
 # Bem-vindo ao Fatura+!
 
 Trabalho desenvolvido por:
-2211919.  Rodrigo Luís
-2211921.  Filipe Marques
-2211925.  Ricardo Santos
+
+2211919 - Rodrigo Luís
+
+2211921 - Filipe Marques
+
+2211925 - Ricardo Santos
  
 # Contas predefinidas
 
